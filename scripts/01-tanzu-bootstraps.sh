@@ -33,7 +33,7 @@ HARBOR_VERSION="2.2.3+vmware.1-tkg.1"
 # Common
 sudo apt-get update
 sudo apt-get -y install curl jq unzip bash-completion dos2unix bash-completion
-sudo snap install yq
+sudo apt-get install yq
 sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
 
 # SSH Key
