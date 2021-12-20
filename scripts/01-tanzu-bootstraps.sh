@@ -126,7 +126,5 @@ sudo tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu > /dev/null
 
 echo 'alias k=kubectl' >>~/.bash_aliases
 echo 'complete -F __start_kubectl k' >>~/.bash_aliases
-echo 'alias kctx=kubectx' >>~/.bash_aliases
-echo 'alias kns=kubens' >>~/.bash_aliases
 
 log "Done"
