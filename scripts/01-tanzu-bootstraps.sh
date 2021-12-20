@@ -50,6 +50,7 @@ HARBOR_VERSION="2.2.3+vmware.1-tkg.1"
 # Common
 log "Cai dat co ban"
 sudo apt-get update
+sudo apt-get install -y apt-transport-https ca-certificates gnupg lsb-release 
 sudo apt-get -y install curl jq unzip bash-completion dos2unix bash-completion
 sudo snap install yq
 sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
