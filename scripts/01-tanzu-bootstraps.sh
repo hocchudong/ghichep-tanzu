@@ -27,13 +27,14 @@ VM_USER=tanzu
 # Folder to put cli binaries
 BIN_FOLDER=/usr/local/bin/
 # https://kubernetes.io/releases/
-KUBECTL_VERSION=v1.21.7
+KUBECTL_VERSION=v1.20.5
 # https://github.com/kubernetes-sigs/kind/releases
 KIND_VERSION=v0.11.1
 # https://github.com/helm/helm/releases
 HELM_VERSION=3.7.2
 # TKG version
-TKG_VERSION=v1.4.0
+# TKG_VERSION=v1.4.0
+TKG_VERSION=v1.3.1
 # Path to save completions
 COMPLETIONS=/etc/bash_completion.d
 
@@ -107,7 +108,7 @@ rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 log "Cai dat Tanzu"
 cd ~
 mkdir tanzu
-tar xvf tanzu-cli-bundle-linux-amd64.tar -C tanzu 
+tar xvf tanzu-cli-bundle-v1.3.1-linux-amd64.tar -C tanzu 
 cd ~/tanzu/cli 
 sudo install core/$TKG_VERSION/tanzu-core-linux_amd64 $BIN_FOLDER/tanzu 
 cd ~/tanzu
@@ -115,7 +116,7 @@ tanzu plugin clean
 tanzu plugin install --local cli all 
 tanzu plugin list
 cd
-rm tanzu-cli-bundle-linux-amd64.tar
+rm tanzu-cli-bundle-v1.3.1-linux-amd64.tar
 
 
 # Create completions & aliases
