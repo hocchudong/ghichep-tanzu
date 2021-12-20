@@ -32,12 +32,18 @@ KUBECTL_VERSION=v1.20.5
 KIND_VERSION=v0.11.1
 # https://github.com/helm/helm/releases
 HELM_VERSION=3.7.2
+
 # TKG version
 # TKG_VERSION=v1.4.0
-TKG_VERSION=v1.3.1
+
+# TKG_VERSION=v1.3.1
+# FILE_TANZU=tanzu-cli-bundle-v1.3.1-linux-amd64.tar
+
+TKG_VERSION=v1.3.0
+FILE_TANZU=tanzu-cli-bundle-linux-amd64.tar
+
 # Path to save completions
 COMPLETIONS=/etc/bash_completion.d
-
 
 GRAFANA_VERSION="7.5.7+vmware.1-tkg.1"
 PROMETHEUS_VERSION="2.27.0+vmware.1-tkg.1"
@@ -108,7 +114,7 @@ rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 log "Cai dat Tanzu"
 cd ~
 mkdir tanzu
-tar xvf tanzu-cli-bundle-v1.3.1-linux-amd64.tar -C tanzu 
+tar xvf $FILE_TANZU -C tanzu 
 cd ~/tanzu/cli 
 sudo install core/$TKG_VERSION/tanzu-core-linux_amd64 $BIN_FOLDER/tanzu 
 cd ~/tanzu
@@ -116,7 +122,7 @@ tanzu plugin clean
 tanzu plugin install --local cli all 
 tanzu plugin list
 cd
-rm tanzu-cli-bundle-v1.3.1-linux-amd64.tar
+rm $FILE_TANZU
 
 
 # Create completions & aliases
