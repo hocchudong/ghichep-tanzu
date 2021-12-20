@@ -1,5 +1,20 @@
 #!/bin/bash
 
+
+###########################################
+# Funtion
+###########################################
+function log() {
+  local line
+
+  echo ""
+  for line in "$@"
+  do
+    echo ">>> $line"
+  done
+  echo ""
+}
+
 ###########################################
 # vSphere
 ###########################################
@@ -30,42 +45,55 @@ CERT_MANAGER_VERSION="1.1.0+vmware.1-tkg.2"
 FLUENT_BIT_VERSION="1.7.5+vmware.1-tkg.1"
 HARBOR_VERSION="2.2.3+vmware.1-tkg.1"
 
+
+
 # Common
+log "Cai dat co ban"
 sudo apt-get update
 sudo apt-get -y install curl jq unzip bash-completion dos2unix bash-completion
-sudo apt-get install yq
+sudo snap install yq
 sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
 
 # SSH Key
-ssh-keygen -t rsa -b 4096
+ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
+
 
 # Kubernetes
 # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+log "Cai dat co kubectl"
 curl -LO https://dl.k8s.io/release/$KUBECTL_VERSION/bin/linux/amd64/kubectl
 sudo mv kubectl $BIN_FOLDER
 sudo chmod +x $BIN_FOLDER/kubectl
 
+
 # Docker
-# https://docs.docker.com/engine/install/ubuntu/#install-using-the-convenience-script
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-rm get-docker.sh 
-sudo usermod -a -G docker $USER
+log "Cai dat docker"
+sudo apt-get remove -y docker docker-engine docker.io containerd runc
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update -y
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 
 # Kind
 # https://kind.sigs.k8s.io/docs/user/quick-start/#installing-from-release-binaries
+log "Cai dat KIND"
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/$KIND_VERSION/kind-linux-amd64
 sudo mv kind $BIN_FOLDER
 chmod +x $BIN_FOLDER/kind
 
 # VMware vSphere API
+log "Cai dat VMware vSphere API"
 curl -LO  https://github.com/vmware/govmomi/releases/download/v0.23.0/govc_linux_amd64.gz
 gunzip govc_linux_amd64.gz
 sudo mv govc_linux_amd64 $BIN_FOLDER/govc
 chmod +x $BIN_FOLDER/govc
 
 # Helm
+log "Cai dat Helm"
 curl -LO https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz
 mkdir helm
 tar -zxvf helm-v${HELM_VERSION}-linux-amd64.tar.gz -C helm
@@ -75,6 +103,7 @@ rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
 # Tanzu
 # https://my.vmware.com/en/web/vmware/downloads/info/slug/infrastructure_operations_management/vmware_tanzu_kubernetes_grid/1_x
+log "Cai dat Tanzu"
 cd ~
 mkdir tanzu
 tar xvf tanzu-cli-bundle-linux-amd64.tar -C tanzu 
@@ -90,6 +119,8 @@ rm tanzu-cli-bundle-linux-amd64.tar
 
 # Create completions & aliases
 # https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
+
+log "Cai dat tien ich"
 sudo kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
 sudo tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu > /dev/null
 
