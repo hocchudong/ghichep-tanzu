@@ -60,7 +60,7 @@ sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates gnupg lsb-release 
 sudo apt-get -y install curl jq unzip bash-completion dos2unix bash-completion
 sudo snap install yq
-sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
+sudo sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
 
 # SSH Key
 ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
@@ -93,12 +93,18 @@ curl -Lo ./kind https://kind.sigs.k8s.io/dl/$KIND_VERSION/kind-linux-amd64
 sudo mv kind $BIN_FOLDER
 chmod +x $BIN_FOLDER/kind
 
+# Carvel
+curl -L https://carvel.dev/install.sh -o install-carvel.sh
+sudo bash install-carvel.sh
+rm install-carvel.sh
+
 # VMware vSphere API
 log "Cai dat VMware vSphere API"
 curl -LO  https://github.com/vmware/govmomi/releases/download/v0.23.0/govc_linux_amd64.gz
 gunzip govc_linux_amd64.gz
 sudo mv govc_linux_amd64 $BIN_FOLDER/govc
 chmod +x $BIN_FOLDER/govc
+
 
 # Helm
 log "Cai dat Helm"
