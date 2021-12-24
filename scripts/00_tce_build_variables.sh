@@ -57,6 +57,5 @@ Kubernetes node OS VM settings for Ubuntu OS
 # Ubuntu
 export MY_IP_ADDRESS=`ifconfig eth0 | grep '192.168.' | awk '{ print $2}'`
 export MY_DOMAIN_NAME="hcdlab.local"
-
-
+export SHORT_HOST=`hostname`
 export METALLB_VIP_RANGE="192.168.20.90-192.168.20.95"

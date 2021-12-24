@@ -18,6 +18,8 @@ function echolog() {
 # Cai dat co ban
 echolog "Cai dat co ban"
 
+hostnamectl set-hostname tcebootstrap
+
 sudo apt update -y
 sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release  
 sudo apt install -y curl jq unzip bash-completion dos2unix bash-completion
@@ -30,7 +32,6 @@ ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
 source ${PWD}/00-tce-build-variables.sh
 
 
-hostnamectl set-hostname tcebootstrap
 echo "Updating /etc/hosts file."
 echo "${MY_IP_ADDRESS} ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" > /etc/hosts
 echo "127.0.0.1 ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" > /etc/hosts
