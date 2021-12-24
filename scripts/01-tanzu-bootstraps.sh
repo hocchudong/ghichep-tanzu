@@ -59,7 +59,7 @@ log "Cai dat co ban"
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates gnupg lsb-release 
 sudo apt-get -y install curl jq unzip bash-completion dos2unix bash-completion
-sudo snap install yq
+# sudo snap install yq
 sudo sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
 
 # SSH Key

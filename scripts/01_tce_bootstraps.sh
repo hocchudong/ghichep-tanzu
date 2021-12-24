@@ -15,18 +15,25 @@ function echolog() {
   done
   echo ""
 }
+# Cai dat co ban
+echolog "Cai dat co ban"
+
+sudo apt update -y
+sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release  
+sudo apt install -y curl jq unzip bash-completion dos2unix bash-completion
+
+# Tao keypairt
+echolog "Setup basic bootstraps server"
+
+ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
 
 source ${HOME}/scripts/00-tce-build-variables.sh
 
-# Setup basic bootstraps server.
-echolog "Setup basic bootstraps server"
-
-apt update -y
 
 hostnamectl set-hostname tcebootstrap
 echo "Updating /etc/hosts file."
-echo "${MY_IP_ADDRESS} ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" >>/etc/hosts
-
+echo "${MY_IP_ADDRESS} ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" > /etc/hosts
+echo "127.0.0.1 ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" > /etc/hosts
 
 
 timedatectl set-timezone Asia/Ho_Chi_Minh
@@ -39,7 +46,6 @@ systemctl enable chrony
 echolog "Setup docker on bootstraps server"
 
 apt remove docker docker-engine docker.io containerd runc
-apt install -y ca-certificates curl gnupg lsb-release jq
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
