@@ -29,7 +29,7 @@ echo "#--------------------------------------------------------------"
 echo "# Starting 56-tce-vsphere-deploy-management.sh" 
 echo "#--------------------------------------------------------------"
 
-source ${HOME}/scripts/00-tce-build-variables.sh
+source $PWD/00_tce_build_variables.sh
 
 echo "Pre-req check, increase connection tracking table size."
 sudo sysctl -w net.netfilter.nf_conntrack_max=524288
