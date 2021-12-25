@@ -1,6 +1,6 @@
 #!/bin/bash -eu
 
-#--------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------
 # Tanzu Community Edition - Deploy a Management Cluster to vSphere Infrastructure
 # Single Control Plane - Development
 #
@@ -9,21 +9,12 @@
 # Documentation: Deploy a Management Cluster to vSphere 
 # https://tanzucommunityedition.io/docs/latest/vsphere-install-mgmt/
 #
-# Tanzu Kubernetes Grid Service is the preferred way to consume Tanzu Kubernetes Grid in vSphere 7.0 environments.
-# To deploy a non-integrated Tanzu Kubernetes Grid instance on vSphere 7.0, we set the 'DEPLOY_TKG_ON_VSPHERE7' variable to 'true' 
-#
 # juliusn - Sun Dec  5 08:48:39 EST 2021 - first version
-#--------------------------------------------------------------------------
+#----------------------------------------------------------------------------------------------------
 
-############################################################################
-##
-## Store vCenter secrets by using the pass insert command:
-##
-##     pass insert provider_vcenter_hostname
-##     pass insert provider_vcenter_username
-##     pass insert provider_vcenter_password
-##
-#############################################################################
+#----------------------------------------------------------------------------------------------------
+# Modify: Cong TO - HCD
+#----------------------------------------------------------------------------------------------------
 
 echo "#--------------------------------------------------------------"
 echo "# Starting 56-tce-vsphere-deploy-management.sh" 
@@ -117,7 +108,7 @@ VSPHERE_DATACENTER: "/${VSPHERE_DATACENTER}"
 VSPHERE_DATASTORE: "/${VSPHERE_DATACENTER}/datastore/${VSPHERE_DATASTORE}"
 VSPHERE_FOLDER: "/${VSPHERE_DATACENTER}/vm/${VSPHERE_FOLDER}"
 VSPHERE_NETWORK: "/${VSPHERE_DATACENTER}/network/${VSPHERE_NETWORK_PG}"
-VSPHERE_RESOURCE_POOL: "/${VSPHERE_DATACENTER}/host/${VSPHERE_DATACENTER}/Resources/${VSPHERE_RESOURCE_POOL}"
+VSPHERE_RESOURCE_POOL: "/${VSPHERE_DATACENTER}/host/${VSPHERE_CLUSTER}/Resources/${VSPHERE_RESOURCE_POOL}"
 VSPHERE_SSH_AUTHORIZED_KEY: "${VSPHERE_SSH_AUTHORIZED_KEY}"
 VSPHERE_TLS_THUMBPRINT: ${VSPHERE_TLS_THUMBPRINT}
 VSPHERE_SERVER: "${VSPHERE_SERVER}"
@@ -134,8 +125,8 @@ echo "Copy cluster configuration file to the default tkg location."
 mkdir -p  ~/.config/tanzu/tkg/clusterconfigs
 cp ${HOME}/scripts/${MGMT_CLUSTER_NAME}-config.yaml ${HOME}/.config/tanzu/tkg/clusterconfigs/${MGMT_CLUSTER_NAME}-config.yaml
 
-## echo "Create management cluster [ ${MGMT_CLUSTER_NAME} ]."
-## tanzu management-cluster create ${MGMT_CLUSTER_NAME}  --file ${HOME}/scripts/${MGMT_CLUSTER_NAME}-config.yaml -v 6
+echo "Create management cluster [ ${MGMT_CLUSTER_NAME} ]."
+tanzu management-cluster create ${MGMT_CLUSTER_NAME}  --file ${HOME}/scripts/${MGMT_CLUSTER_NAME}-config.yaml -v 6
 
 ## Check management cluster details
 ## tanzu management-cluster get
