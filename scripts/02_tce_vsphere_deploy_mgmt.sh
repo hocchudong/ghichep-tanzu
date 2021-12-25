@@ -132,15 +132,15 @@ echo "Copy cluster configuration file to the default tkg location."
 mkdir -p  ~/.config/tanzu/tkg/clusterconfigs
 cp ${HOME}/scripts/${MGMT_CLUSTER_NAME}-config.yaml ${HOME}/.config/tanzu/tkg/clusterconfigs/${MGMT_CLUSTER_NAME}-config.yaml
 
-# echo "Create management cluster [ ${MGMT_CLUSTER_NAME} ]."
-# tanzu management-cluster create ${MGMT_CLUSTER_NAME}  --file ${HOME}/scripts/${MGMT_CLUSTER_NAME}-config.yaml -v 6
+## echo "Create management cluster [ ${MGMT_CLUSTER_NAME} ]."
+## tanzu management-cluster create ${MGMT_CLUSTER_NAME}  --file ${HOME}/scripts/${MGMT_CLUSTER_NAME}-config.yaml -v 6
 
 ## Check management cluster details
-# tanzu management-cluster get
+## tanzu management-cluster get
 
 ## Capture the management cluster’s kubeconfig 
-# export KUBECONFIG=${HOME}/.kube/config-${MGMT_CLUSTER_NAME}
-# tanzu management-cluster kubeconfig get --admin
+## export KUBECONFIG=${HOME}/.kube/config-${MGMT_CLUSTER_NAME}
+## tanzu management-cluster kubeconfig get --admin
 
 # echo "Setting kubectl context to the management cluster."
 # kubectl config use-context ${MGMT_CLUSTER_NAME}-admin@${MGMT_CLUSTER_NAME}
@@ -149,4 +149,4 @@ cp ${HOME}/scripts/${MGMT_CLUSTER_NAME}-config.yaml ${HOME}/.config/tanzu/tkg/cl
 ## echo "End point check"
 ## curl --insecure https://${mgmt_cpl_end_point}:6443
 
-echo "Done 56-tce-vsphere-deploy-management.sh"
+echo "DONE"
