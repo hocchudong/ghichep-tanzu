@@ -40,7 +40,7 @@ export VSPHERE_RESOURCE_POOL="HCD-Tanzu-Resources"
 # export NODE_OS_NAME="photon"
 # export NODE_OS_VERSION="3"
 
-Kubernetes node OS VM settings for Ubuntu OS
+# Kubernetes node OS VM settings for Ubuntu OS
 # export OVA_VM_NAME="ubuntu-2004-kube-v1.21.2+vmware.1"
 # export OVA_FILE="${HOME}/ova/ubuntu-2004-kube-v1.21.2+vmware.1-tkg.1-7832907791984498322.ova"
 # export OVA_JSON_FILE="${HOME}/ova/kubernetes-node-ova-specs.json"

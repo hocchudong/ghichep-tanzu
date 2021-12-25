@@ -23,6 +23,7 @@ hostnamectl set-hostname tcebootstrap
 sudo apt update -y
 sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release  
 sudo apt install -y curl jq unzip bash-completion dos2unix bash-completion
+sudo apt install -y net-tools
 
 # Tao keypairt
 echolog "Setup basic bootstraps server"
@@ -34,7 +35,7 @@ source $PWD/00_tce_build_variables.sh
 
 echo "Updating /etc/hosts file."
 echo "${MY_IP_ADDRESS} ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" > /etc/hosts
-echo "127.0.0.1 ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" > /etc/hosts
+echo "127.0.0.1 ${SHORT_HOST}.${MY_DOMAIN_NAME} ${SHORT_HOST}" >> /etc/hosts
 
 
 timedatectl set-timezone Asia/Ho_Chi_Minh
