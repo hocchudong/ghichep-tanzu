@@ -102,4 +102,18 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 
+# Create completions & aliases
+# https://kubernetes.io/docs/tasks/tools/included/optional-kubectl-configs-bash-linux/
+log "Cai dat tien ich"
+sudo kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
+sudo tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu > /dev/null
+
+type _init_completion
+
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+echo 'source <(tanzu completion bash)' >> ~/.bashrc
+
+kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
+tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu
+
 

@@ -137,7 +137,17 @@ log "Cai dat tien ich"
 sudo kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
 sudo tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu > /dev/null
 
-echo 'alias k=kubectl' >>~/.bash_aliases
-echo 'complete -F __start_kubectl k' >>~/.bash_aliases
+type _init_completion
+
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+echo 'source <(tanzu completion bash)' >> ~/.bashrc
+
+kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
+tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu
+
+# echo 'alias k=kubectl' >>~/.bash_aliases
+# echo 'complete -F __start_kubectl k' >>~/.bash_aliases
+
+
 
 log "Done"

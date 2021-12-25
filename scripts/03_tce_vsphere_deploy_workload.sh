@@ -60,7 +60,7 @@ echo "Setting kubectl context to the management cluster."
 kubectl config use-context ${WKLD_CLUSTER_NAME}-admin@${WKLD_CLUSTER_NAME}
 kubectl get nodes -A
 
-echo "End point check"
-curl --insecure https://${WKLD_VSPHERE_CONTROL_PLANE_ENDPOINT}:6443
+# echo "End point check"
+# curl --insecure https://${WKLD_VSPHERE_CONTROL_PLANE_ENDPOINT}:6443
 
 echo "Done 57-tce-vsphere-deploy-workload.sh"
