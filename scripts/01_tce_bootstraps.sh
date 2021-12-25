@@ -29,7 +29,7 @@ echolog "Setup basic bootstraps server"
 
 ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
 
-source ${PWD}/00-tce-build-variables.sh
+source ${PWD}/00_tce_build_variables.sh
 
 
 echo "Updating /etc/hosts file."
