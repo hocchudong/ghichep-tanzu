@@ -50,7 +50,6 @@ apt remove docker docker-engine docker.io containerd runc
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
 apt update -y
 apt install docker-ce docker-ce-cli containerd.io -y
 usermod -aG docker $USER
@@ -58,9 +57,7 @@ usermod -aG docker $USER
 systemctl enable docker
 systemctl start docker
 
-
 # Download and Install Tanzu Community Edition
-cd ~
 
 echolog "Download and Install Tanzu Community Edition release ${TCE_VERSION}"
 curl -LO https://github.com/vmware-tanzu/community-edition/releases/download/v${TCE_VERSION}/tce-linux-amd64-v${TCE_VERSION}.tar.gz
@@ -74,7 +71,7 @@ export ALLOW_INSTALL_AS_ROOT=true
 tanzu version
 tanzu plugin list
 
-cd ~
+cd ~/scripts
 
 echo "Download and install kubectl version ${K8S_VERSION}"
 curl -LO https://dl.k8s.io/release/v${K8S_VERSION}/bin/linux/amd64/kubectl
