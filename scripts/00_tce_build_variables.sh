@@ -29,23 +29,18 @@ export VSPHERE_NETWORK_PG="dvpg-vlan-20"
 export VSPHERE_TLS_THUMBPRINT="91:CC:21:D7:2E:9B:AB:A2:9F:9C:EE:77:19:59:A0:93:60:12:47:BC"
 export VSPHERE_SERVER="vc.hcdlab.local"
 export VSPHERE_USERNAME="administrator@vsphere.local"
+export VSPHERE_PASSWORD="Homelab@2020"
 export VSPHERE_SSH_KEY=`cat ${HOME}/.ssh/id_rsa.pub`
 export VSPHERE_FOLDER="tanzu-folder"
 export VSPHERE_RESOURCE_POOL="HCD-Tanzu-Resources"
 
-# K8s node VM settings for Photon OS
-# export OVA_VM_NAME="photon-3-kube-v1.21.2+vmware.1"
-# export OVA_FILE="${HOME}/ova/photon-3-kube-v1.21.2+vmware.1-tkg.2-12816990095845873721.ova"
-# export OVA_JSON_FILE="${HOME}/ova/kubernetes-node-ova-specs.json"
-# export NODE_OS_NAME="photon"
-# export NODE_OS_VERSION="3"
 
 # Kubernetes node OS VM settings for Ubuntu OS
-# export OVA_VM_NAME="ubuntu-2004-kube-v1.21.2+vmware.1"
-# export OVA_FILE="${HOME}/ova/ubuntu-2004-kube-v1.21.2+vmware.1-tkg.1-7832907791984498322.ova"
-# export OVA_JSON_FILE="${HOME}/ova/kubernetes-node-ova-specs.json"
-# export NODE_OS_NAME="ubuntu"
-# export NODE_OS_VERSION="20.04"
+OVA_VM_NAME="ubuntu-2004-kube-v1.21.2+vmware.1"
+OVA_FILE="${HOME}/ova/ubuntu-2004-kube-v1.21.2+vmware.1-tkg.1-7832907791984498322.ova"
+OVA_JSON_FILE="${HOME}/ova/kubernetes-node-ova-specs.json"
+NODE_OS_NAME="ubuntu"
+NODE_OS_VERSION="20.04"
 
 # export GOVC_URL="https://$(pass provider_vcenter_hostname)"
 # export GOVC_USERNAME=$(pass provider_vcenter_username)
