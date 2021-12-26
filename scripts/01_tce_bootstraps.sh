@@ -28,7 +28,11 @@ sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release
 sudo apt install -y curl jq unzip bash-completion dos2unix bash-completion
 sudo apt install -y net-tools
 
-# Tao keypairt
+# yq
+wget https://github.com/mikefarah/yq/releases/download/v{YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq 
+chmod +x /usr/bin/yq
+
+# Tao keypair
 echolog "Setup basic bootstraps server"
 
 ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
