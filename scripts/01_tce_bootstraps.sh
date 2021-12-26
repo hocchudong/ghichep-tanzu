@@ -115,7 +115,7 @@ sudo tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu > /dev/null
 type _init_completion
 
 echo 'source <(kubectl completion bash)' >> ~/.bashrc 
-echo 'source <(tanzu completion bash)' >> ~/.bashrc 
+echo 'source <(tanzu completion bash)' >> ~/.bashrc
 
 kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
 tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu
