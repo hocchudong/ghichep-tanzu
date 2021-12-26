@@ -33,6 +33,7 @@ KIND_VERSION=v0.11.1
 # https://github.com/helm/helm/releases
 HELM_VERSION=3.7.2
 
+
 # TKG version
 # TKG_VERSION=v1.4.0
 
@@ -67,7 +68,7 @@ sudo sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
 ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
 
 # yq
-wget https://github.com/mikefarah/yq/releases/download/v{YQ_VERSION}/yq_linux_amd64 -O /usr/bin/yq 
+wget https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64 -O /usr/bin/yq 
 chmod +x /usr/bin/yq
 
 # Kubernetes
