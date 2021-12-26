@@ -124,6 +124,7 @@ rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 log "Cai dat Tanzu"
 cd ~
 mkdir tanzu
+# Tanzu 1.3
 wget http://192.168.20.212/tanzu/tkg1.3/tanzu-cli-bundle-linux-amd64.tar
 
 tar xvf $FILE_TANZU -C tanzu 
