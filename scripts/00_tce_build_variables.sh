@@ -10,6 +10,7 @@
 # Modify: Cong TO - HCD
 #----------------------------------------------------------------------------------------------------
 
+## TCE version 0.9.1
 TCE_VERSION="0.9.1"
 K8S_VERSION="1.20.1"
 KIND_VERSION="0.11.1"
@@ -21,6 +22,8 @@ YQ_VERSION="4.13.5"
 # K8S_VERSION="1.22.4"
 # KIND_VERSION="0.11.1"
 # OCTANT_VERSION="0.25.0"
+# YQ_VERSION="4.13.5"
+
 
 MGMT_CLUSTER_NAME="tcemgnt"
 WKLD_CLUSTER_NAME="tcewl01"
