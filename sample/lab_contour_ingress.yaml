@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+  labels:
+    app: my-web
+spec:
+  defaultBackend:
+    service:
+       name: nginx
+       port: 
+         number: 80
+ 
+ 

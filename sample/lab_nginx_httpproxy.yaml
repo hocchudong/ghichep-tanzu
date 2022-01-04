@@ -1,0 +1,22 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  name: nginx-http-proxy
+  namespace: default
+spec:
+  virtualhost:
+    fqdn: ingress.hcdlab.local
+  routes:
+  - conditions:
+    - prefix: /
+    services:
+    - name:  nginx-deployment-b
+      port: 80
+  - conditions:
+    - prefix: /green
+    pathRewritePolicy:
+      replacePrefix:
+      - replacement: /
+    services:
+    - name:  nginx-deployment-g
+      port: 80
