@@ -35,12 +35,12 @@ HELM_VERSION=3.7.2
 
 
 # TKG version
-# TKG_VERSION=v1.4.0
+TKG_VERSION=v1.4.0
 
 # TKG_VERSION=v1.3.1
 # FILE_TANZU=tanzu-cli-bundle-v1.3.1-linux-amd64.tar
 
-TKG_VERSION=v1.3.0
+# TKG_VERSION=v1.3.0
 FILE_TANZU=tanzu-cli-bundle-linux-amd64.tar
 
 # Path to save completions
@@ -125,8 +125,8 @@ rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 log "Cai dat Tanzu"
 cd ~
 mkdir tanzu
-# Tanzu 1.3
-wget http://192.168.20.212/tanzu/tkg1.3/tanzu-cli-bundle-linux-amd64.tar
+# Tanzu 1.4
+wget http://192.168.20.212/tanzu/tkg1.4/tanzu-cli-bundle-linux-amd64.tar
 
 tar xvf $FILE_TANZU -C tanzu 
 cd ~/tanzu/cli 
