@@ -10,13 +10,23 @@
 # Modify: Cong TO - HCD
 #----------------------------------------------------------------------------------------------------
 
+## TCE version 0.9.1
 TCE_VERSION="0.9.1"
 K8S_VERSION="1.20.1"
 KIND_VERSION="0.11.1"
 OCTANT_VERSION="0.25.0"
+YQ_VERSION="4.13.5"
 
-MGMT_CLUSTER_NAME="tce-mgnt"
-WKLD_CLUSTER_NAME="tc-wl01"
+## TCE version 0.10.0
+# TCE_VERSION="0.10.0-rc.2"
+# K8S_VERSION="1.22.4"
+# KIND_VERSION="0.11.1"
+# OCTANT_VERSION="0.25.0"
+# YQ_VERSION="4.13.5"
+
+
+MGMT_CLUSTER_NAME="tcemgnt"
+WKLD_CLUSTER_NAME="tcewl01"
 MGMT_VSPHERE_CONTROL_PLANE_ENDPOINT="192.168.20.85"
 WKLD_VSPHERE_CONTROL_PLANE_ENDPOINT="192.168.20.86"
 DEPLOY_TKG_ON_VSPHERE7="true" 

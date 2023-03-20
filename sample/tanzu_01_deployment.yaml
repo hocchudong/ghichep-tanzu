@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-ngnix
+  labels:
+    app: my-ngnix
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-ngnix
+  template:
+    metadata:
+      labels:
+        app: my-ngnix
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 8080

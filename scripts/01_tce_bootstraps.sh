@@ -28,12 +28,17 @@ sudo apt install -y apt-transport-https ca-certificates gnupg lsb-release
 sudo apt install -y curl jq unzip bash-completion dos2unix bash-completion
 sudo apt install -y net-tools
 
-# Tao keypairt
+
+# Tao keypair
 echolog "Setup basic bootstraps server"
 
 ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
 
-source $PWD/00_tce_build_variables.sh
+source $HOME/scripts/00_tce_build_variables.sh
+
+# yq
+wget https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64 -O /usr/bin/yq 
+chmod +x /usr/bin/yq
 
 
 echo "Updating /etc/hosts file."
@@ -110,7 +115,7 @@ sudo tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu > /dev/null
 
 type _init_completion
 
-echo 'source <(kubectl completion bash)' >> ~/.bashrc
+echo 'source <(kubectl completion bash)' >> ~/.bashrc 
 echo 'source <(tanzu completion bash)' >> ~/.bashrc
 
 kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl

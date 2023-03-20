@@ -33,13 +33,14 @@ KIND_VERSION=v0.11.1
 # https://github.com/helm/helm/releases
 HELM_VERSION=3.7.2
 
+
 # TKG version
-# TKG_VERSION=v1.4.0
+TKG_VERSION=v1.4.0
 
 # TKG_VERSION=v1.3.1
 # FILE_TANZU=tanzu-cli-bundle-v1.3.1-linux-amd64.tar
 
-TKG_VERSION=v1.3.0
+# TKG_VERSION=v1.3.0
 FILE_TANZU=tanzu-cli-bundle-linux-amd64.tar
 
 # Path to save completions
@@ -51,7 +52,7 @@ CONTOUR_VERSION="1.17.1+vmware.1-tkg.1"
 CERT_MANAGER_VERSION="1.1.0+vmware.1-tkg.2"
 FLUENT_BIT_VERSION="1.7.5+vmware.1-tkg.1"
 HARBOR_VERSION="2.2.3+vmware.1-tkg.1"
-
+YQ_VERSION="4.13.5"
 
 
 # Common
@@ -59,12 +60,16 @@ log "Cai dat co ban"
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates gnupg lsb-release 
 sudo apt-get -y install curl jq unzip bash-completion dos2unix bash-completion
+sudo apt install -y net-tools
 # sudo snap install yq
 sudo sed -i 's/#force_color_prompt=yes/force_color_prompt=yes/g' .bashrc
 
 # SSH Key
 ssh-keygen -t rsa -b 4096 -N "" -f $HOME/.ssh/id_rsa
 
+# yq
+wget https://github.com/mikefarah/yq/releases/download/v$YQ_VERSION/yq_linux_amd64 -O /usr/bin/yq 
+chmod +x /usr/bin/yq
 
 # Kubernetes
 # https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
@@ -120,6 +125,9 @@ rm helm-v${HELM_VERSION}-linux-amd64.tar.gz
 log "Cai dat Tanzu"
 cd ~
 mkdir tanzu
+# Tanzu 1.4
+wget http://192.168.20.212/tanzu/tkg1.4/tanzu-cli-bundle-linux-amd64.tar
+
 tar xvf $FILE_TANZU -C tanzu 
 cd ~/tanzu/cli 
 sudo install core/$TKG_VERSION/tanzu-core-linux_amd64 $BIN_FOLDER/tanzu 
@@ -139,8 +147,8 @@ sudo tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu > /dev/null
 
 type _init_completion
 
-echo 'source <(kubectl completion bash)' >> ~/.bashrc
-echo 'source <(tanzu completion bash)' >> ~/.bashrc
+echo 'source <(kubectl completion bash)' >> ~/.bashrc 
+echo 'source <(tanzu completion bash)' >> ~/.bashrc 
 
 kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
 tanzu completion bash | sudo tee /etc/bash_completion.d/tanzu
